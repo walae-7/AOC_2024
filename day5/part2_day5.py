@@ -18,24 +18,31 @@ def check(n, m, comparisons) :
             return False
     return True
             
+def swap(n, m, comparisons , list_element) :
+    if not check(n,m,comparisons) :
+        i = element.index(n)
+        j = element.index(m)
+        list_element[i]= m           
+        list_element[j]= n   
+    return list_element      
+
+
 flag_1 = True
 sum = 0
 for element in lists :
     length = len(element)
-    flag_1 = True
+    element0 = 0
     for i in range(length) : 
-        if flag_1 :
-            for j in range(i+1,length) :
-                if check(element[i], element[j], comparisons=comparisons) :
-                    continue
-                else : 
-                    flag_1 = False
-                    break
-    if  flag_1 : sum += int(element[length//2])
+        for j in range(i+1,length) :
+            if check(element[i], element[j], comparisons=comparisons) :
+                continue
+            else : 
+                element0 = swap(element[i], element[j], comparisons=comparisons, list_element = element)
+                
+    if element0!=0:
+        sum += int(element0[length//2])
+
     
 print(sum)
                 
             
-        
-     
-
